@@ -25,6 +25,7 @@ class View extends Croquet.View {
         this.modelViewers = modelViewers;
         this.modelViewers.forEach((modelViewer, index) => {
             modelViewer.removeAttribute("auto-rotate");
+            modelViewer.setAttribute("interaction-prompt", "none");
             modelViewer.addEventListener("camera-change", event => {
                 const {source} = event.detail;
                 if(source == "user-interaction") {
@@ -55,4 +56,4 @@ class View extends Croquet.View {
 
 
 if(modelViewers.length > 0)
-    Croquet.startSession("model-viewer", Model, View);
+    Croquet.startSession(`model-viewer-${window.location.href}`, Model, View);
